@@ -11,11 +11,15 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.navigation.findNavController
+import edu.quinnipiac.edu.ser210.RecpieFinderApp.databinding.FragmentSecondBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class SecondFragment : Fragment() {
+
+    private var _binding: FragmentSecondBinding? = null
+    private val binding get() = _binding !!
 
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
@@ -24,14 +28,18 @@ class SecondFragment : Fragment() {
     ): View? {
 
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_second, container, false)
-        val food = view.findViewById<EditText>(R.id.FoodName)
-        val search = view.findViewById<Button>(R.id.search)
+        //val view = inflater.inflate(R.layout.fragment_second, container, false)
+
+        _binding = FragmentSecondBinding.inflate(inflater, container, false)
+        val view = binding.root
+
+        //val food = view.findViewById<EditText>(R.id.FoodName)
+        val search = binding.search
 
         search.setOnClickListener {
             //navigate to the next screen------COMMENT OUT
             val navController = view.findNavController()
-            val message = food.text.toString()
+            val message = binding.FoodName.text.toString()
             val apiInterface = APiInterface.create().getRecipes(message)
             //navigates to the action ID
             if(message.equals("")){
