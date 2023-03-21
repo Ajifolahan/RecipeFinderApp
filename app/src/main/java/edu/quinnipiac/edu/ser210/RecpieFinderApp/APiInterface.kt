@@ -12,7 +12,7 @@ import retrofit2.http.Query
 interface APiInterface {
 
     @GET("/v1/recipe")
-    @Headers("X-RapidAPI-Key:27c2debd20msh3bb8699f6a24062p1accdfjsn21cb10a1b31c", "X-RapidAPI-Host:recipe-by-api-ninjas.p.rapidapi.com")
+    @Headers("X-RapidAPI-Key:", "X-RapidAPI-Host:recipe-by-api-ninjas.p.rapidapi.com")
     fun getRecipes(@Query("query") query:String) : Call<ArrayList<RecipeItem?>?>?
 
     companion object {
