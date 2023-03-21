@@ -3,10 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/secondFragment">
+    app:startDestination="@id/splashScreen">
     <fragment
         android:id="@+id/secondFragment"
         android:name="edu.quinnipiac.edu.ser210.RecpieFinderApp.SecondFragment"
         android:label="fragment_second"
         tools:layout="@layout/fragment_second" />
+    <fragment
+        android:id="@+id/splashScreen"
+        android:name="edu.quinnipiac.edu.ser210.RecpieFinderApp.SplashScreen"
+        android:label="SplashScreen" >
+        <action
+            android:id="@+id/action_splashScreen_to_secondFragment"
+            app:destination="@id/secondFragment" />
+    </fragment>
 </navigation>
