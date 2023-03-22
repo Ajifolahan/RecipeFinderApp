@@ -8,11 +8,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Query
+import java.io.File
 
 interface APiInterface {
 
     @GET("/v1/recipe")
-    @Headers("X-RapidAPI-Key:", "X-RapidAPI-Host:recipe-by-api-ninjas.p.rapidapi.com")
+    @Headers(BuildConfig.api_key, "X-RapidAPI-Host:recipe-by-api-ninjas.p.rapidapi.com")
     fun getRecipes(@Query("query") query:String) : Call<ArrayList<RecipeItem?>?>?
 
     companion object {
