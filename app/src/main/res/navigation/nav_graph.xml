@@ -8,7 +8,11 @@
         android:id="@+id/secondFragment"
         android:name="edu.quinnipiac.edu.ser210.RecpieFinderApp.SecondFragment"
         android:label="fragment_second"
-        tools:layout="@layout/fragment_second" />
+        tools:layout="@layout/fragment_second" >
+        <action
+            android:id="@+id/action_secondFragment_to_recipeResult"
+            app:destination="@id/recipeResult" />
+    </fragment>
     <fragment
         android:id="@+id/splashScreen"
         android:name="edu.quinnipiac.edu.ser210.RecpieFinderApp.SplashScreen"
@@ -16,5 +20,25 @@
         <action
             android:id="@+id/action_splashScreen_to_secondFragment"
             app:destination="@id/secondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recipeResult"
+        android:name="edu.quinnipiac.edu.ser210.RecpieFinderApp.RecipeResult"
+        android:label="RecipeResult" >
+        <argument
+            android:name="message"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_recipeResult_to_recipeDetails"
+            app:destination="@id/recipeDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/recipeDetails"
+        android:name="edu.quinnipiac.edu.ser210.RecpieFinderApp.RecipeDetails"
+        android:label="fragment_recipe_details"
+        tools:layout="@layout/fragment_recipe_details" >
+        <argument
+            android:name="recipe_Id"
+            app:argType="integer" />
     </fragment>
 </navigation>

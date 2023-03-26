@@ -47,34 +47,8 @@ class SecondFragment : Fragment() {
                 Toast.makeText(context, "Please enter a valid food name to proceed", Toast.LENGTH_LONG).show()
             } else {
                 Toast.makeText(context,"Getting Response", Toast.LENGTH_SHORT).show()
-                if (apiInterface != null) {
-                    apiInterface.enqueue(object : Callback<ArrayList<RecipeItem?>?> {
-                        override fun onResponse(
-                            call: Call<ArrayList<RecipeItem?>?>?,
-                            response: Response<ArrayList<RecipeItem?>?>
-                        ) {
-                            if (response != null) {
-                                Log.d("Main activity", response.message())
-                                Log.d("Main activity", response.headers().toString())
-                                Log.d("Main activity", response.body().toString())
-                                //navigate to next screen-----COMMENT OUT
-                                //val action = SecondFragmentDirections.actionIntroScreenToMainActivity()
-                                //navController.navigate(action)
-                            }
-                        }
-
-                        override fun onFailure(call: Call<ArrayList<RecipeItem?>?>, t: Throwable) {
-                            if (t != null) {
-                                t.message?.let { Log.d("onFailure", it) }
-                                Toast.makeText(
-                                    context,
-                                    "Error on API call.Please provide a different food name",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
-                        }
-                    })
-                }
+                val action = SecondFragmentDirections.actionSecondFragmentToRecipeResult(message)
+                view.findNavController().navigate(action)
             }
 
         }
