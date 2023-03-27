@@ -27,9 +27,6 @@ class SecondFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        // Inflate the layout for this fragment
-        //val view = inflater.inflate(R.layout.fragment_second, container, false)
-
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
         val view = binding.root
 
