@@ -28,7 +28,7 @@ class RecyclerAdapter(val context: Context,  var navController: NavController) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val appnetwork = BasicNetwork(HurlStack())
-        val appcache = DiskBasedCache(context.cacheDir, 5* 1024 * 1024) // 1MB cap
+        val appcache = DiskBasedCache(context.cacheDir, 10* 1024 * 1024) // 1MB cap
         requestQueue = RequestQueue(appcache, appnetwork).apply {
             start()
         }
@@ -73,7 +73,7 @@ class RecyclerAdapter(val context: Context,  var navController: NavController) :
             title.text = currRecipe.title
             val words = title.text.split("\\s+")
             val result = words.joinToString("+")
-            fetchData(result)
+           fetchData(result)
         }
 
         fun fetchData(input: String) {

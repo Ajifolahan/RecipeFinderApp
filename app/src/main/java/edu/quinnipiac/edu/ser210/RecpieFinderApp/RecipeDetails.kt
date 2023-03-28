@@ -60,7 +60,7 @@ class RecipeDetails : Fragment() {
         binding.ingredients.text = recipeList.get(recipe_id).ingredients
         binding.servings.text = recipeList.get(recipe_id).servings
         binding.instructions.text = recipeList.get(recipe_id).instructions
-        fetchData(recipeList.get(recipe_id).title)
+       fetchData(recipeList.get(recipe_id).title)
 
     }
 

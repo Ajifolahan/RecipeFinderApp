@@ -41,4 +41,9 @@
             android:name="recipe_Id"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/helpFragment"
+        android:name="edu.quinnipiac.edu.ser210.RecpieFinderApp.HelpFragment"
+        android:label="Help"
+        tools:layout="@layout/fragment_help" />
 </navigation>
