@@ -1,3 +1,5 @@
+//@Authors: Camryn Keller and Momoreoluwa Ayinde
+
 package edu.quinnipiac.edu.ser210.RecpieFinderApp
 
 import android.annotation.SuppressLint
@@ -18,6 +20,7 @@ import retrofit2.Response
 
 class SecondFragment : Fragment() {
 
+    //view binding for the layout
     private var _binding: FragmentSecondBinding? = null
     private val binding get() = _binding !!
 
@@ -30,11 +33,9 @@ class SecondFragment : Fragment() {
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        //val food = view.findViewById<EditText>(R.id.FoodName)
         val search = binding.search
 
         search.setOnClickListener {
-            //navigate to the next screen------COMMENT OUT
             val navController = view.findNavController()
             val message = binding.FoodName.text.toString()
             val apiInterface = APiInterface.create().getRecipes(message)

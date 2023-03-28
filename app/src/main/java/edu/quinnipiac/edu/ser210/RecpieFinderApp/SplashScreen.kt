@@ -1,3 +1,5 @@
+//@Authors: Camryn Keller and Momoreoluwa Ayinde
+
 package edu.quinnipiac.edu.ser210.RecpieFinderApp
 
 import android.os.Bundle
@@ -18,6 +20,7 @@ class SplashScreen : Fragment() {
         //variable for start button
         val startButton = view.findViewById<Button>(R.id.start_button)
 
+        //onclick listener for the start button
         startButton.setOnClickListener {
             view.findNavController().navigate(R.id.action_splashScreen_to_secondFragment)
         }

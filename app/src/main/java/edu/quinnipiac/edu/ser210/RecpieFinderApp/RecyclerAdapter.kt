@@ -1,8 +1,9 @@
+//@Authors: Camryn Keller and Momoreoluwa Ayinde
+
 package edu.quinnipiac.edu.ser210.RecpieFinderApp
 
 import android.content.Context
 import android.util.Log
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,63 +21,77 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
+// Create an empty ArrayList to hold recipe items
 var recipeList : ArrayList<RecipeItem> = ArrayList()
 
-class RecyclerAdapter(val context: Context,  var navController: NavController) : RecyclerView.Adapter<RecyclerAdapter.MyViewHolder>() {
+class RecyclerAdapter(val context: Context, var navController: NavController) : RecyclerView.Adapter<RecyclerAdapter.MyViewHolder>() {
+
+    // Declare a RequestQueue object to handle HTTP requests using Volley library
     lateinit var requestQueue: RequestQueue
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        // Create a new RequestQueue instance using the application's cache and network
         val appnetwork = BasicNetwork(HurlStack())
-        val appcache = DiskBasedCache(context.cacheDir, 10* 1024 * 1024) // 1MB cap
+        val appcache = DiskBasedCache(context.cacheDir, 10* 1024 * 1024) // 10MB cap
         requestQueue = RequestQueue(appcache, appnetwork).apply {
             start()
         }
 
+        // Inflate the layout for the view holder
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
         return MyViewHolder(view, context)
     }
 
+    // This function returns the size of the recipe list
     override fun getItemCount(): Int {
         return recipeList.size
     }
 
+    // This function binds the data to the view holder's UI elements
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-
-
         holder.bind(position)
     }
 
+    // This function sets the recipe list to the given list and updates the UI
     fun setRecipeListItems(recipe: ArrayList<RecipeItem>) {
         recipeList = recipe
         notifyDataSetChanged()
     }
 
-
+    // Define the view holder class
     inner class MyViewHolder(itemView: View, private val context: Context) :
         RecyclerView.ViewHolder(itemView) {
 
+        // Declare the UI elements used in this view holder
         private val title: TextView = itemView!!.findViewById(R.id.item_title)
         val image: ImageView = itemView!!.findViewById(R.id.item_image)
         private var pos: Int = 0
 
+        // Set an on-click listener to navigate to the RecipeDetails fragment
         init {
             itemView.setOnClickListener {
                 val action = RecipeResultDirections.actionRecipeResultToRecipeDetails(pos)
                 navController.navigate(action)
-
             }
         }
+
+        // Bind the data at the given position to the UI elements
         fun bind(position: Int) {
             pos = position
             val currRecipe = recipeList.get(position)
             title.text = currRecipe.title
+
+            // Convert the title into a query string by replacing spaces with '+'
             val words = title.text.split("\\s+")
             val result = words.joinToString("+")
-           fetchData(result)
+
+            // Fetch the image for the recipe using Google Custom Search API
+            fetchData(result)
         }
 
-        fun fetchData(input: String) {
+        // This function fetches the image for the given query string using Google Custom Search API
+            fun fetchData(input: String) {
+                // Construct the URL for the API request
             val url = "https://www.googleapis.com/customsearch/v1?q=$input+recipe&cx=222f6e80dbc7642dc&imgSize=medium&searchType=image&key=${BuildConfig.api_key2}"
             val jsonObjectRequest = JsonObjectRequest(
                 Request.Method.GET, url, null,
