@@ -90,8 +90,8 @@ class RecyclerAdapter(val context: Context, var navController: NavController) : 
         }
 
         // This function fetches the image for the given query string using Google Custom Search API
-            fun fetchData(input: String) {
-                // Construct the URL for the API request
+        fun fetchData(input: String) {
+            // Construct the URL for the API request
             val url = "https://www.googleapis.com/customsearch/v1?q=$input+recipe&cx=222f6e80dbc7642dc&imgSize=medium&searchType=image&key=${BuildConfig.api_key2}"
             val jsonObjectRequest = JsonObjectRequest(
                 Request.Method.GET, url, null,
@@ -104,7 +104,7 @@ class RecyclerAdapter(val context: Context, var navController: NavController) : 
                     }
                 },
                 { error ->
-                    Log.d("vol", error.toString())
+                    Log.d("API error", error.toString())
                 }
             )
 
