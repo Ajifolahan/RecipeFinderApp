@@ -46,4 +46,9 @@
         android:name="edu.quinnipiac.edu.ser210.RecpieFinderApp.HelpFragment"
         android:label="Help"
         tools:layout="@layout/fragment_help" />
+    <fragment
+        android:id="@+id/optionsFragment"
+        android:name="edu.quinnipiac.edu.ser210.RecpieFinderApp.OptionsFragment"
+        android:label="fragment_options"
+        tools:layout="@layout/fragment_options" />
 </navigation>

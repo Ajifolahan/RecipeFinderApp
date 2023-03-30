@@ -6,6 +6,7 @@
     tools:context="edu.quinnipiac.edu.ser210.RecpieFinderApp.SecondFragment">
 
         <ImageView
+            android:id="@+id/background"
             android:src= "@drawable/backgroundimage"
             android:scaleType="centerCrop"
             android:layout_width="match_parent"

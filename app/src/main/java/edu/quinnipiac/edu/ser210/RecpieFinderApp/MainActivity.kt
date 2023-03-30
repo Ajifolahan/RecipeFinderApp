@@ -52,8 +52,9 @@ class MainActivity : AppCompatActivity() {
 
         return when(id){
             // Handle the "Settings" menu item selection
-            R.id.action_settings -> {
-                //change background color
+            R.id.optionsFragment -> {
+                NavigationUI.onNavDestinationSelected(item!!, navController)
+                        || super.onOptionsItemSelected(item)
                 true
             }
 
