@@ -13,7 +13,7 @@
         android:layout_gravity = "center"
         android:textSize="20sp"
         android:textColor = "@color/blue"
-        android:text="Pick a mode for the background" />
+        android:text="@string/pick" />
 
     <Button
         android:id="@+id/night_Button"
@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10sp"
         android:layout_gravity = "center"
-        android:text="Night Mode"
+        android:text="@string/night"
         />
 
 
@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10sp"
         android:layout_gravity = "center"
-        android:text="Light Mode"
+        android:text="@string/light"
         />
 
 </LinearLayout>

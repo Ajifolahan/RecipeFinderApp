@@ -12,6 +12,9 @@
     <string name="share">Share</string>
     <string name="settings">Settings</string>
     <string name="help">Help</string>
-
-
+    <string name="pick">Pick a mode for the background</string>
+    <string name="night">Night Mode</string>
+    <string name="light">Light Mode</string>
+    <string name="APIinfo">The API Ninjas Recipe API provides access to over 200,000 creative recipes from all cuisines around the world. It provides a list of recipes for a given search query.  </string>
+    <string name="Appinfo">When searching for a recipe, 10 results will pop up with recipe titles and pictures. Then click on one of the results to see the recipe\'s details and instructions. If you need to go back, hit the back button. </string>
 </resources>
